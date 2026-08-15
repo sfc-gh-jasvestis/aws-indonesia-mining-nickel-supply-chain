@@ -1,0 +1,122 @@
+{
+  "title": "Nickel Supply Chain Visibility",
+  "duration": "4 minutes",
+  "thesis": "Snowflake tracks nickel from mine face to battery cathode \u2014 Dynamic Tables maintain real-time material flow, ML.FORECAST projects processing output, and Iceberg shares certified supply chain data with EV OEMs",
+  "tabs": [
+    {
+      "id": "supply-chain-overview",
+      "persona": {
+        "name": "Bambang Hartono",
+        "role": "VP Supply Chain & Logistics",
+        "avatar": "\ud83d\udc68\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "Forty mines feeding 12 processing plants producing battery-grade nickel for global EV OEMs.",
+        "Monthly output at 92% of plan \u2014 HPAL Plant 2 in Morowali experiencing acid supply constraints.",
+        "Delivery compliance at 96.3% \u2014 two contracts flagged for potential shortfall next quarter."
+      ],
+      "show": [
+        "Point at 92% output vs plan KPI",
+        "Highlight HPAL Plant 2 in amber",
+        "Note 96.3% delivery compliance"
+      ],
+      "call_out": "92% of plan \u2014 HPAL Plant 2 bottleneck, 2 contracts at risk",
+      "transition": {
+        "next_tab": "material-flow",
+        "line": "Let's drill into the material flow to see where nickel is getting stuck."
+      }
+    },
+    {
+      "id": "material-flow",
+      "persona": {
+        "name": "Rina Wulandari",
+        "role": "Operations Analyst",
+        "avatar": "\ud83d\udc69\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "80,000 material movements tracked from mine face to battery-grade product.",
+        "Processing yield averaging 87% for RKEF, 91% for HPAL \u2014 both within spec.",
+        "Ore grade from Morowali mines trending down 0.3% Ni \u2014 affecting HPAL feed quality."
+      ],
+      "show": [
+        "Show Sankey diagram of material flow",
+        "Point at yield percentages by process",
+        "Highlight declining grade trend"
+      ],
+      "call_out": "Grade declining 0.3% Ni at Morowali \u2014 feed quality impact on HPAL",
+      "transition": {
+        "next_tab": "predictive-analytics",
+        "line": "Grade variance is the issue. Let's see what ML projects for output."
+      }
+    },
+    {
+      "id": "predictive-analytics",
+      "persona": {
+        "name": "Rina Wulandari",
+        "role": "Operations Analyst",
+        "avatar": "\ud83d\udc69\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "ML.FORECAST projects production output per plant 30 days forward.",
+        "HPAL Plant 2 projected to recover to 95% capacity after acid supply normalizes.",
+        "Grade anomaly detection flagged 3 mines with unusual variance \u2014 potential contamination."
+      ],
+      "show": [
+        "Show production forecast chart by plant",
+        "Point at HPAL Plant 2 recovery curve",
+        "Highlight grade anomaly markers"
+      ],
+      "call_out": "ML projects HPAL recovery in 2 weeks \u2014 but 3 mines flagged for grade anomaly",
+      "transition": {
+        "next_tab": "ask-ai",
+        "line": "Now let the VP ask about delivery commitments."
+      }
+    },
+    {
+      "id": "ask-ai",
+      "persona": {
+        "name": "Bambang Hartono",
+        "role": "VP Supply Chain & Logistics",
+        "avatar": "\ud83d\udc68\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "Bambang asks: 'What's our delivery compliance rate for EV OEM contracts?'",
+        "Cortex Analyst queries delivery data \u2014 returns 96.3% with 2 contracts at risk.",
+        "Follow-up: 'What are our options if HPAL Plant 2 continues underperforming?' \u2014 agent assesses alternatives."
+      ],
+      "show": [
+        "Type delivery question",
+        "Show SQL + results",
+        "Switch to advisory mode for mitigation"
+      ],
+      "call_out": "Two AI modes: supply chain analytics + strategic advisory",
+      "transition": {
+        "next_tab": "architecture",
+        "line": "Every capability \u2014 native Snowflake SQL, open Iceberg for buyers."
+      }
+    },
+    {
+      "id": "architecture",
+      "persona": {
+        "name": "Bambang Hartono",
+        "role": "VP Supply Chain & Logistics",
+        "avatar": "\ud83d\udc68\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "Six Snowflake capabilities, six AWS services in the dual-build architecture.",
+        "Iceberg enables EV OEMs to verify supply chain provenance via Athena.",
+        "Indonesia holds 22% of global nickel reserves. This tracks 40 mines to battery-grade product."
+      ],
+      "show": [
+        "Walk through architecture diagram",
+        "Toggle dual-build mode",
+        "Point at Iceberg buyer access"
+      ],
+      "call_out": "One platform, mine-to-battery traceability, open Iceberg for buyers",
+      "transition": {
+        "next_tab": "",
+        "line": "That's Snowflake and AWS \u2014 better together for nickel supply chains."
+      }
+    }
+  ]
+}
