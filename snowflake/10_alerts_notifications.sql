@@ -8,7 +8,7 @@ USE SCHEMA APP;
 CREATE OR REPLACE NOTIFICATION INTEGRATION aws_indonesia_mining_nickel_supply_chain_EMAIL_INT
   TYPE = EMAIL
   ENABLED = TRUE
-  ALLOWED_RECIPIENTS = ('jonathan.asvestis@snowflake.com');
+  ALLOWED_RECIPIENTS = ('<YOUR_EMAIL>');
 
 -- Alert: DELIVERY_RISK_ALERT
 CREATE OR REPLACE ALERT APP.DELIVERY_RISK_ALERT
@@ -22,7 +22,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_indonesia_mining_nickel_supply_chain_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Nickel Supply Chain Visibility: Buyer delivery commitment at risk — production shortfall projected',
     'Buyer delivery commitment at risk — production shortfall projected'
   );
@@ -41,7 +41,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_indonesia_mining_nickel_supply_chain_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Nickel Supply Chain Visibility: Product grade deviation exceeds buyer specification tolerance',
     'Product grade deviation exceeds buyer specification tolerance'
   );
