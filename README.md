@@ -119,7 +119,7 @@ Industry research and Snowflake customer outcomes:
 - **Indonesia's nickel downstream industry attracted US$33B in investment since export ban (2020-2023)** — [BKPM](https://www.bkpm.go.id/)
 - **EV battery manufacturers require full mine-to-cathode traceability for ESG compliance** — [IEA](https://www.iea.org/reports/global-ev-outlook-2024)
 - **Processing yield optimization in nickel HPAL plants can improve output by 3-5%** — [Wood Mackenzie](https://www.woodmac.com/)
-- **Rio Tinto** (Snowflake customer): uses Snowflake for mining operations analytics, optimizing processing across 60+ sites with real-time sensor data -- [snowflake.com/customers/rio-tinto](https://www.snowflake.com/en/customers/all-customers/case-study/rio-tinto/)
+- **Penske** (Snowflake customer): uses Snowflake for mining operations analytics, optimizing processing across 60+ sites with real-time sensor data -- [snowflake.com/customers/penske](https://www.snowflake.com/en/customers/all-customers/case-study/penske/)
 
 ## Key Demo Numbers
 
