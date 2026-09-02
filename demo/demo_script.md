@@ -1,108 +1,81 @@
-# Demo Script: Nickel Supply Chain Visibility
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake tracks nickel from mine face to battery cathode — Dynamic Tables maintain real-time material flow, ML.FORECAST projects processing output, and Iceberg shares certified supply chain data with EV OEMs"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Nickel Supply Chain Visibility
 
----
+**Indonesia - Mining & Nickel Processing**
+Use case: Supply Chain Visibility
 
-## Two Personas
+> End-to-end nickel supply chain tracking from mine to battery-grade product for Indonesia's US$33B nickel industry — Dynamic Tables build material flow graphs, Iceberg enables buyer traceability via Athena.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Bambang Hartono** | VP Supply Chain & Logistics | React App (SPCS) | Material flow visibility, processing bottlenecks, buyer delivery commitments, export ban compliance |
-| **Rina Wulandari** | Operations Analyst | Amazon QuickSight | Processing yield, ore grade variance, logistics costs, stockpile management |
+## Why Snowflake
 
----
+Snowflake tracks nickel from mine face to battery cathode — Dynamic Tables maintain real-time material flow, ML.FORECAST projects processing output, and Iceberg shares certified supply chain data with EV OEMs
 
-## What's Built
+- **Mine-to-battery material flow tracking** - Only demo tracking nickel from mine face through RKEF/HPAL to battery-grade product
+- **ML.FORECAST for processing plant output** - Only demo forecasting nickel processing output for delivery compliance
+- **Grade anomaly detection** - ML.ANOMALY_DETECTION flags ore grade variance before it impacts product specifications
+- **Iceberg for EV OEM buyer traceability** - Only demo enabling battery manufacturer supply chain verification via Athena
+- **Indonesian nickel processing context** - 22% global reserves, RKEF/HPAL processing, export ban policy, EV battery supply chain
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `ID_MINING_NICKEL_SUPPLY_CHAIN` |
+| Service | `ID_MINING_NICKEL_SUPPLY_CHAIN_APP` |
+| Compute pool | `SEA_DEMOS_INDONESIA_POOL` |
+| Dimension table | `RAW.PROCESSING_PLANTS` (20 rows) |
+| Fact table | `RAW.PRODUCTION_LOGS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | IDR (Rp) |
+
+Regions in play: Jakarta, North Sumatra, Riau, East Kalimantan, Sulawesi
+Segments: Mine to Port, Port to Smelter, Smelter to Export, Domestic
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh ID_MINING_NICKEL_SUPPLY_CHAIN
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 6 tables | MINES (40), PROCESSING_PLANTS (12), MATERIAL_FLOW (80000), PRODUCTION_LOGS (150000), BUYER_CONTRACTS (200), SUPPLY_CHAIN_DOCS (150) |
-| **CURATED** | 4 Dynamic Tables | MATERIAL_BALANCE, PLANT_PERFORMANCE, DELIVERY_COMPLIANCE, GRADE_ANALYTICS |
-| **ML** | ML.FORECAST + ML.ANOMALY_DETECTION | Forecasting + anomaly detection |
-| **AI** | COMPLETE, AI_EXTRACT, SUMMARIZE | Classification + extraction |
-| **Search** | Cortex Search | 150 documents indexed |
-| **Agent** | NICKEL_SUPPLY_CHAIN_AGENT | Semantic View + Search tools |
+| Shipments (MTD) | `84 vessels` | total across Processing Plants |
+| Port Queue | `7 days` | average per event |
+| Ore Stockpile | `2.4M WMT` | total across Processing Plants |
+| Active Haulers | `1,247` | total across Processing Plants |
+| Hauling Cost/WMT | `Rp 124K` | average per event |
+| Port Utilization | `87%` | average per event |
+| Vessel Turnaround | `4.2 days` | average per event |
 
 
----
+## Demo flow
 
-## The Story
+1. Supply Chain Overview
+2. Material Flow
+3. Predictive Analytics
+4. Ask AI
+5. Architecture & Data
 
-Indonesia controls 22% of global nickel reserves and has banned raw ore exports to force domestic processing into battery-grade products. With 40 mines feeding 12 RKEF and HPAL plants, the VP Supply Chain needs real-time material flow visibility — but grade variance, processing bottlenecks, and long-term buyer contract commitments require predictive intelligence, not monthly reports.
+## Talking points
 
----
+- **40 mines** - active nickel mines across Sulawesi and Maluku
+- **12 plants** - RKEF and HPAL processing plants
+- **80,000 movements** - material flow records tracked
+- **96.3% compliance** - buyer delivery commitment rate
+- **150 documents** - contracts and certificates searchable
+- **92% of plan** - current monthly production output
 
-## Script
+## Business impact
 
-### [0:00–0:45] SUPPLY CHAIN OVERVIEW
-
-**Show**: Supply Chain Overview tab
-
-> "Forty mines feeding 12 processing plants producing battery-grade nickel for global EV OEMs."
-
-**Action**: Point at 92% output vs plan KPI
-
-### [0:45–1:30] MATERIAL FLOW
-
-**Show**: Material Flow tab
-
-> "80,000 material movements tracked from mine face to battery-grade product."
-
-**Action**: Show Sankey diagram of material flow
-
-### [1:30–2:15] PREDICTIVE ANALYTICS
-
-**Show**: Predictive Analytics tab
-
-> "ML.FORECAST projects production output per plant 30 days forward."
-
-**Action**: Show production forecast chart by plant
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Bambang asks: 'What's our delivery compliance rate for EV OEM contracts?'"
-
-**Action**: Type delivery question
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Six Snowflake capabilities, six AWS services in the dual-build architecture."
-
-**Action**: Walk through architecture diagram
-
+- Indonesia produced 1.8 million tonnes of nickel in 2023 — 49% of global mine production (USGS)
+- Indonesia's nickel downstream industry attracted US$33B in investment since export ban (2020-2023) (BKPM)
+- EV battery manufacturers require full mine-to-cathode traceability for ESG compliance (IEA)
+- Processing yield optimization in nickel HPAL plants can improve output by 3-5% (Wood Mackenzie)
 
 ---
-
-## Key Demo Differentiators
-
-1. **Mine-to-battery material flow tracking** — Only demo tracking nickel from mine face through RKEF/HPAL to battery-grade product
-2. **ML.FORECAST for processing plant output** — Only demo forecasting nickel processing output for delivery compliance
-3. **Grade anomaly detection** — ML.ANOMALY_DETECTION flags ore grade variance before it impacts product specifications
-4. **Iceberg for EV OEM buyer traceability** — Only demo enabling battery manufacturer supply chain verification via Athena
-5. **Indonesian nickel processing context** — 22% global reserves, RKEF/HPAL processing, export ban policy, EV battery supply chain
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM NICKEL_SUPPLY_CHAIN.RAW.MINES` → 40
-- [ ] `SELECT COUNT(*) FROM NICKEL_SUPPLY_CHAIN.RAW.MATERIAL_FLOW` → 80000
-- [ ] `SELECT COUNT(*) FROM NICKEL_SUPPLY_CHAIN.RAW.PRODUCTION_LOGS` → 150000
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM NICKEL_SUPPLY_CHAIN.ML.PRODUCTION_OUTPUT_FORECAST_RESULTS` → >0
-- [ ] `SELECT COUNT(*) FROM NICKEL_SUPPLY_CHAIN.ML.GRADE_VARIANCE_RESULTS WHERE IS_ANOMALY = TRUE` → >=3
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM NICKEL_SUPPLY_CHAIN.AI.DOC_EXTRACT_RESULTS` → 150
-
+Generated from `generator/demo_specs/aws-indonesia-mining-nickel-supply-chain.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-indonesia-mining-nickel-supply-chain` instead.
