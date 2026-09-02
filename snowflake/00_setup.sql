@@ -1,16 +1,13 @@
--- ============================================================================
--- Nickel Supply Chain Visibility
--- End-to-end nickel supply chain tracking from mine to battery-grade product for Indonesia's US$33B nickel industry — Dynamic Tables build material flow graphs, Iceberg enables buyer traceability via Athena.
--- ============================================================================
-USE ROLE ACCOUNTADMIN;
-CREATE DATABASE IF NOT EXISTS NICKEL_SUPPLY_CHAIN;
-CREATE WAREHOUSE IF NOT EXISTS NICKEL_WH WAREHOUSE_SIZE = 'MEDIUM' AUTO_SUSPEND = 120 AUTO_RESUME = TRUE;
-USE DATABASE NICKEL_SUPPLY_CHAIN;
-CREATE SCHEMA IF NOT EXISTS RAW;
-CREATE SCHEMA IF NOT EXISTS CURATED;
-CREATE SCHEMA IF NOT EXISTS ML;
-CREATE SCHEMA IF NOT EXISTS AI;
-CREATE SCHEMA IF NOT EXISTS SEARCH;
-CREATE SCHEMA IF NOT EXISTS APP;
+-- Generated from generator/demo_specs/aws-indonesia-mining-nickel-supply-chain.json
+-- Regenerate with: python3 generator/gen_repo_docs.py aws-indonesia-mining-nickel-supply-chain
+-- This is the schema that is actually deployed for ID_MINING_NICKEL_SUPPLY_CHAIN.
 
-USE WAREHOUSE NICKEL_WH;
+-- ID_MINING_NICKEL_SUPPLY_CHAIN  (Nickel Supply Chain Visibility)
+-- generated from generator/demo_specs/aws-indonesia-mining-nickel-supply-chain.json - do not hand-edit
+CREATE DATABASE IF NOT EXISTS ID_MINING_NICKEL_SUPPLY_CHAIN;
+CREATE SCHEMA IF NOT EXISTS ID_MINING_NICKEL_SUPPLY_CHAIN.RAW;
+CREATE SCHEMA IF NOT EXISTS ID_MINING_NICKEL_SUPPLY_CHAIN.CURATED;
+CREATE SCHEMA IF NOT EXISTS ID_MINING_NICKEL_SUPPLY_CHAIN.APP;
+USE DATABASE ID_MINING_NICKEL_SUPPLY_CHAIN;
+
+-- 5 real regions; entity names carry their region so the two always agree
