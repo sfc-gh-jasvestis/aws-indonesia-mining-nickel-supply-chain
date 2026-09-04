@@ -54,6 +54,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="indonesia"
+            labels={{ entity: 'Vessels', event: 'Production Logs', alert: 'Delays' }}
             regions={data?.regions}
             markers={[{"label": "Morowali", "value": "IMIP: 42K t NPI/mo", "color": "green", "size": "lg"}, {"label": "Halmahera", "value": "Ore: 1.2M WMT", "color": "green", "size": "lg"}, {"label": "Obi Island", "value": "Port queue: 7 days", "color": "red", "size": "md"}, {"label": "Jakarta", "value": "Trading HQ", "color": "blue", "size": "md"}, {"label": "Makassar", "value": "Logistics hub", "color": "blue", "size": "sm"}]}
             routes={[{"from": "Halmahera", "to": "Morowali", "color": "#29B5E8"}, {"from": "Morowali", "to": "Makassar", "color": "#10B981"}]}
@@ -84,8 +85,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: '#' },
           { key: 'name', header: 'Vessel' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Status' },
-          { key: 'value', header: 'Cargo (WMT)' },
+          { key: 'm1', header: 'Cargo (WMT)' },
+          { key: 'm2', header: 'Hauling Cost Wmt' },
+          { key: 'm3', header: 'Port Utilization' },
+          { key: 'events', header: 'Production Logs' },
+          { key: 'alerts', header: 'Delays' },
         ]}
         data={data?.entities || []}
         title="Shipping Schedule"
